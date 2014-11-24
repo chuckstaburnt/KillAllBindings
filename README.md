@@ -4,7 +4,7 @@ KillAllBindings is a tool that removes TFS source control bindings from a projec
 ### Objective
 This was written specifically for use when migrating source code from TFS to another SCM. If these bindings are left in the solution files, Visual Studio will try to connect to your TFS server again. This can cause issues.
 
-I wrote this in preperation for a migration from TFS to Stash (commerical version of Git) but it should work regardless of what SCM you're moving to.
+I wrote this in preparation for a migration from TFS to Stash (commercial version of Git) but it should work regardless of what SCM you're moving to.
 
 ### Testing
 This has been tested on VS2010 and VS2013 solution files. 
