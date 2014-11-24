@@ -17,11 +17,11 @@ namespace KillAllBindings
             string[] vsssccFilesArray;
             string[] slnFilesArray;
 
-            System.Console.WriteLine("===================================================");
-            System.Console.WriteLine("KillAllBindings\n");
+            System.Console.WriteLine("====================================================");
+            System.Console.WriteLine("===================KillAllBindings==================\n");
             System.Console.WriteLine("Removes read only flags, deletes .vssscc files,");
             System.Console.WriteLine("and removes source control bindings from sln files.");
-            System.Console.WriteLine("===================================================\n");
+            System.Console.WriteLine("====================================================\n");
             
             // Get path from user, build array of sub-directories.
             do
@@ -30,6 +30,18 @@ namespace KillAllBindings
                 rootPath = Console.ReadLine();
             } while (Directory.Exists(rootPath) == false);
             System.Console.WriteLine("Path checks out.\n");
+
+            // Check to ensure the user understands what this does before continuing. Exits immediately if don't enter y or Y.
+            System.Console.Write("This program modifies source files! Are you sure you wish to continue? (y/n): ");
+            string verify = Console.ReadLine();
+            if (verify == "y" || verify == "Y")
+            {
+                System.Console.WriteLine("Continuing.\n");
+            }
+            else
+            {
+                System.Environment.Exit(1);
+            }
 
             // Remove read only flags from ALL files.
             System.Console.WriteLine("Removing read only flags from all files in {0}.\n", rootPath);
@@ -64,7 +76,7 @@ namespace KillAllBindings
             System.Console.WriteLine("Looking for .sln files.\n");
             slnFilesArray = System.IO.Directory.GetFiles(rootPath, "*.sln", SearchOption.AllDirectories);
             int scount = slnFilesArray.Count();
-            System.Console.WriteLine("Found {0} solution files.", scount);
+            System.Console.WriteLine("Found {0} solution files.\n", scount);
 
             // Remove source control binding section.
             int editedSlnFileCount = 0;
