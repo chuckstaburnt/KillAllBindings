@@ -20,6 +20,10 @@ First and most importantly, this is the <b>first</b> thing I've ever written in 
 
 Feel free to contribute to this project, submit bugs, fix bugs, whatever. I want this to be as useful as possible.
 
+### Version
+<b>1.0</b>
+- Initial release.
+
 ### License
 The MIT License (MIT)
 
