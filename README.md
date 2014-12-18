@@ -21,6 +21,10 @@ First and most importantly, this is the <b>first</b> thing I've ever written in 
 Feel free to contribute to this project, submit bugs, fix bugs, whatever. I want this to be as useful as possible.
 
 ### Version
+<b>1.2</b>
+- Change some of the language in the script to be more clear.
+- Added a "recap" section at the bottom of the script since results get truncated on large filesets.
+
 <b>1.1</b>
 - Added an extra check before continuing.
 
