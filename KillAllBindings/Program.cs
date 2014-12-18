@@ -29,7 +29,7 @@ namespace KillAllBindings
                 System.Console.Write("Source code path: ");
                 rootPath = Console.ReadLine();
             } while (Directory.Exists(rootPath) == false);
-            System.Console.WriteLine("Path checks out.\n");
+            System.Console.WriteLine("Path exists.\n");
 
             // Check to ensure the user understands what this does before continuing. Exits immediately if don't enter y or Y.
             System.Console.Write("This program modifies source files! Are you sure you wish to continue? (y/n): ");
@@ -46,6 +46,7 @@ namespace KillAllBindings
             // Remove read only flags from ALL files.
             System.Console.WriteLine("Removing read only flags from all files in {0}.\n", rootPath);
             allFilesArray = System.IO.Directory.GetFiles(rootPath, "*.*", SearchOption.AllDirectories);
+            int FlagCount = 0;
             foreach (string file in allFilesArray)
             {
                 FileAttributes attributes = File.GetAttributes(file);
@@ -54,13 +55,14 @@ namespace KillAllBindings
                     attributes = attributes & ~FileAttributes.ReadOnly;
                     File.SetAttributes(file, attributes);
                     System.Console.WriteLine("Removed read only flag for {0}.", file);
+                    FlagCount++;
                 }
                 else
                 {
                     System.Console.WriteLine("Skipping {0}. Not read only.", file);
                 }
             }
-            System.Console.WriteLine("Done removing read only flags.\n");
+            System.Console.WriteLine("All read only flags removed.");
 
             // Delete all .vssscc files.
             vsssccFilesArray = System.IO.Directory.GetFiles(rootPath, "*.vssscc", SearchOption.AllDirectories);
@@ -70,7 +72,6 @@ namespace KillAllBindings
                 System.Console.WriteLine("Deleting {0}.", file);
                 File.Delete(file);
             }
-            System.Console.WriteLine("Deleted {0} vssscc files.\n", vcount);
 
             // Build a list of solution files.
             System.Console.WriteLine("Looking for .sln files.\n");
@@ -118,8 +119,13 @@ namespace KillAllBindings
                 }
             }
 
-            System.Console.WriteLine("Re-wrote {0} out of {1} solution files.\n", editedSlnFileCount, scount);
-            System.Console.Write("Done. Press enter to close.");
+            System.Console.WriteLine("=========================================");
+            System.Console.WriteLine("Results:");
+            System.Console.WriteLine("Removed read only flag from {0} files.", FlagCount);
+            System.Console.WriteLine("Deleted {0} vssscc files.", vcount);
+            System.Console.WriteLine("Re-wrote {0} out of {1} solution files.", editedSlnFileCount, scount);
+            System.Console.Write("Done. Press enter to close.\n");
+            System.Console.WriteLine("=========================================");
             System.Console.ReadLine(); // Using this as a hold open.
         }
 
