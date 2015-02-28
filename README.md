@@ -12,7 +12,7 @@ This has been tested on VS2010 and VS2013 solution files.
 ### How It Works
 KillAllBindings only does a few things.
 - Remove read only flags from ALL files in your project.
-- Delete .vssscc files.
+- Delete .vssscc & vspscc files.
 - Remove source code bindings section from solution files (if present).
 
 ### Disclaimer
@@ -21,6 +21,9 @@ First and most importantly, this is the <b>first</b> thing I've ever written in 
 Feel free to contribute to this project, submit bugs, fix bugs, whatever. I want this to be as useful as possible.
 
 ### Version
+<b>1.3</b>
+- vspscc files are now removed.
+
 <b>1.2</b>
 - Change some of the language in the script to be more clear.
 - Added a "recap" section at the bottom of the script since results get truncated on large filesets.
