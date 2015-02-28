@@ -15,13 +15,14 @@ namespace KillAllBindings
             string rootPath;
             string[] allFilesArray;
             string[] vsssccFilesArray;
+            string[] vspsccFilesArray;
             string[] slnFilesArray;
 
-            System.Console.WriteLine("====================================================");
-            System.Console.WriteLine("===================KillAllBindings==================\n");
-            System.Console.WriteLine("Removes read only flags, deletes .vssscc files,");
+            System.Console.WriteLine("======================================================");
+            System.Console.WriteLine("==================-KillAllBindings-===================\n");
+            System.Console.WriteLine("Removes read only flags, deletes .vssscc, vspscc files,");
             System.Console.WriteLine("and removes source control bindings from sln files.");
-            System.Console.WriteLine("====================================================\n");
+            System.Console.WriteLine("======================================================\n");
             
             // Get path from user, build array of sub-directories.
             do
@@ -70,6 +71,15 @@ namespace KillAllBindings
             foreach (string file in vsssccFilesArray)
             {
                 System.Console.WriteLine("Deleting {0}.", file);
+                File.Delete(file);
+            }
+
+            // Delete all .vspscc files.
+            vspsccFilesArray = System.IO.Directory.GetFiles(rootPath, "*.vspscc", SearchOption.AllDirectories);
+            int pcount = vspsccFilesArray.Count();
+            foreach (string file in vspsccFilesArray)
+            {
+                System.Console.WriteLine("Deleting {0}", file);
                 File.Delete(file);
             }
 
@@ -123,6 +133,7 @@ namespace KillAllBindings
             System.Console.WriteLine("Results:");
             System.Console.WriteLine("Removed read only flag from {0} files.", FlagCount);
             System.Console.WriteLine("Deleted {0} vssscc files.", vcount);
+            System.Console.WriteLine("Deleted {0} vspscc files.", pcount);
             System.Console.WriteLine("Re-wrote {0} out of {1} solution files.", editedSlnFileCount, scount);
             System.Console.WriteLine("=========================================\n\n");
             System.Console.Write("Done. Press enter to close.\n");
