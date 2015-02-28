@@ -19,7 +19,7 @@ namespace KillAllBindings
             string[] slnFilesArray;
 
             System.Console.WriteLine("======================================================");
-            System.Console.WriteLine("==================-KillAllBindings-===================\n");
+            System.Console.WriteLine("===================-KillAllBindings-==================\n");
             System.Console.WriteLine("Removes read only flags, deletes .vssscc, vspscc files,");
             System.Console.WriteLine("and removes source control bindings from sln files.");
             System.Console.WriteLine("======================================================\n");
