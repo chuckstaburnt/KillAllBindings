@@ -18,30 +18,25 @@ namespace KillAllBindings
             string[] vspsccFilesArray;
             string[] slnFilesArray;
 
-            System.Console.WriteLine("======================================================");
             System.Console.WriteLine("===================-KillAllBindings-==================\n");
             System.Console.WriteLine("Removes read only flags, deletes .vssscc, vspscc files,");
             System.Console.WriteLine("and removes source control bindings from sln files.");
             System.Console.WriteLine("======================================================\n");
             
-            // Get path from user, build array of sub-directories.
-            do
+            // Make sure arguments are not empty.
+            if (args == null || args.Length == 0)
             {
-                System.Console.Write("Source code path: ");
-                rootPath = Console.ReadLine();
-            } while (Directory.Exists(rootPath) == false);
-            System.Console.WriteLine("Path exists.\n");
-
-            // Check to ensure the user understands what this does before continuing. Exits immediately if don't enter y or Y.
-            System.Console.Write("This program modifies source files! Are you sure you wish to continue? (y/n): ");
-            string verify = Console.ReadLine();
-            if (verify == "y" || verify == "Y")
-            {
-                System.Console.WriteLine("Continuing.\n");
-            }
-            else
-            {
+                System.Console.WriteLine("You must provide a path to the root source code directory. Cannot continue. Exiting.");
                 System.Environment.Exit(1);
+            }
+
+            rootPath = args[0];
+
+            // Make sure path exists.
+            if (Directory.Exists(rootPath) == false)
+            {
+                System.Console.WriteLine("Root path does not exist. Cannot continue. Exiting.");
+                System.Environment.Exit(2);
             }
 
             // Remove read only flags from ALL files.
@@ -60,7 +55,7 @@ namespace KillAllBindings
                 }
                 else
                 {
-                    System.Console.WriteLine("Skipping {0}. Not read only.", file);
+                    //System.Console.WriteLine("Skipping {0}. Not read only.", file);
                 }
             }
             System.Console.WriteLine("All read only flags removed.\n");
@@ -135,9 +130,8 @@ namespace KillAllBindings
             System.Console.WriteLine("Deleted {0} vssscc files.", vcount);
             System.Console.WriteLine("Deleted {0} vspscc files.", pcount);
             System.Console.WriteLine("Re-wrote {0} out of {1} solution files.", editedSlnFileCount, scount);
-            System.Console.WriteLine("=========================================\n\n");
-            System.Console.Write("Done. Press enter to close.\n");
-            System.Console.ReadLine(); // Using this as a hold open.
+            System.Console.WriteLine("=========================================");
+            System.Environment.Exit(0);
         }
 
         // Returns linenumber of the first instance of a keyword in a text file.
