@@ -6,7 +6,7 @@ This was written specifically for use when migrating source code from TFS to ano
 
 I wrote this in preparation for a migration from TFS to Stash (commercial version of Git) but it should work regardless of what SCM you're moving to.
 
-### Testing
+### Versions Tested
 This has been tested on VS2010 and VS2013 solution files. 
 
 ### How It Works
@@ -15,12 +15,21 @@ KillAllBindings only does a few things.
 - Delete .vssscc & vspscc files.
 - Remove source code bindings section from solution files (if present).
 
+### Usage
+````
+KillAllBindings.exe C:\source\code\path\
+````
+
 ### Disclaimer
 First and most importantly, this is the <b>first</b> thing I've ever written in C#. Regardless, I am not responsible for any and all issues that arise out of the use of this code.
 
 Feel free to contribute to this project, submit bugs, fix bugs, whatever. I want this to be as useful as possible.
 
 ### Version
+<b>1.4</b>
+- Now expects an argument at runtime for the source code path.
+- Prints out slightly less crap.
+
 <b>1.3</b>
 - vspscc files are now removed.
 
@@ -37,7 +46,7 @@ Feel free to contribute to this project, submit bugs, fix bugs, whatever. I want
 ### License
 The MIT License (MIT)
 
-Copyright (c) 2014 Chas Berndt
+Copyright (c) 2015 Chas Berndt
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
