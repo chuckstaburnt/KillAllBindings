@@ -1,4 +1,4 @@
-# File: kab_build.ps1
+# File: build.ps1
 # KillAllBindings PowerShell build script.
 # PowerShell
 
