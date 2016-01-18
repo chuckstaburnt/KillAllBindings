@@ -15,6 +15,9 @@ KillAllBindings only does a few things.
 - Delete .vssscc & vspscc files.
 - Remove source code bindings section from solution files (if present).
 
+### Download
+If you do not wish to download the source and build it yourself, you can download the latest executable from here: http://chasberndt.com/kab/latest/
+
 ### Usage
 ````
 KillAllBindings.exe C:\source\code\path\
@@ -46,7 +49,7 @@ Feel free to contribute to this project, submit bugs, fix bugs, whatever. I want
 ### License
 The MIT License (MIT)
 
-Copyright (c) 2015 Chas Berndt
+Copyright (c) 2015-2016 Chas Berndt
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
