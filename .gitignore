@@ -189,3 +189,6 @@ UpgradeLog*.htm
 
 # Microsoft Fakes
 FakesAssemblies/
+
+# Previously checked in binaries.
+Compiled Versions/
